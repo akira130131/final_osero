@@ -98,13 +98,12 @@ public class MainActivity extends AppCompatActivity {
         rectButtons[4][4].setBackgroundResource(R.drawable.kuro);
         rectButtons[3][4].setBackgroundResource(R.drawable.siro);
         rectButtons[4][3].setBackgroundResource(R.drawable.siro);
-        rectButtons[2][2].setBackgroundResource(R.drawable.siro);
+
         //黒:1 白:2
         button_flag[3][3] = 1;
         button_flag[4][4] = 1;
         button_flag[3][4] = 2;
         button_flag[4][3] = 2;
-        button_flag[2][2] = 2;
         first = true;
     }
 
@@ -125,8 +124,6 @@ public class MainActivity extends AppCompatActivity {
                             for (int x=0;yoko!=0&&tate!=0&&flag!=1; x++) {//左斜上検索
                                 yoko =yoko-1;
                                 tate=tate-1;
-                                System.out.println(yoko);//2
-                                System.out.println(tate);//2
                                 if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
                                     flag = 1;
                                 } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
