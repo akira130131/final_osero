@@ -258,15 +258,612 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 }//白の場合何もしない
                             }
+                            flag=0;
+                            yoko = i;
+                            tate = j;
                         }
-                        flag=0;
-                        yoko = i;
-                        tate = j;
-                        if(yoko==1&&(tate>=0||tate<=7)){   //外枠から2番目
-                            if ((yoko==1&&tate==0)||(yoko==1&&tate==1)){//右、斜右下、下
+                        if ((yoko==1&&(tate>=1||tate<=6))||(yoko==6&&(tate>=1||tate<=6))||(tate==1&&(yoko>=1||yoko<=6))||(tate==6&&(yoko>=1||yoko<=6))) {   //外枠から2番目
+                            if (yoko == 1 && tate == 1) {//右、斜右下、下
+                                for (int x = 0; yoko != 7 && tate != 7 && flag != 1; x++) {//右下検索
+                                    yoko = yoko + 1;
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 7 && flag != 1; x++) {//下検索
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 7 && flag != 1; x++) {//右検索
+                                    yoko = yoko + 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                            }
+                            flag = 0;
+                            yoko = i;
+                            tate = j;
+                            if (yoko == 1 && (tate >= 2 && tate <= 5)) {    //右、斜右下、下、右斜上、上
+                                for (int x = 0; yoko != 7 && tate != 7 && flag != 1; x++) {//右下検索
+                                    yoko = yoko + 1;
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 1) {  //黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 7 && flag != 1; x++) {   //下検索
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 7 && flag != 1; x++) {   //右検索
+                                    yoko = yoko + 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 7 && tate != 7 && flag != 1; x++) {  //右斜上検索
+                                    yoko = yoko + 1;
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 0 && flag != 1; x++) {//上検索
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                            }
+                            flag = 0;
+                            yoko = i;
+                            tate = j;
+                            if (yoko == 1 && tate == 6) {    //右、斜右上、上
+                                for (int x = 0; yoko != 7 && tate != 7 && flag != 1; x++) {  //右斜上検索
+                                    yoko = yoko + 1;
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 0 && flag != 1; x++) {//上検索
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 7 && flag != 1; x++) {//右検索
+                                    yoko = yoko + 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                            }
+                            flag = 0;
+                            yoko = i;
+                            tate = j;
+                            if (tate == 1 && (yoko >= 2 && yoko <= 5)) {    //右、左斜下、下、右斜下、左
+                                for (int x = 0; yoko != 7 && tate != 7 && flag != 1; x++) {//右下検索
+                                    yoko = yoko + 1;
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 1) {  //黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 7 && flag != 1; x++) {   //下検索
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 7 && flag != 1; x++) {   //右検索
+                                    yoko = yoko + 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 0 && tate != 7 && flag != 1; x++) {//左下検索
+                                    yoko = yoko - 1;
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 0 && flag != 1; x++) {//左検索
+                                    yoko = yoko - 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                            }
+                            flag = 0;
+                            yoko = i;
+                            tate = j;
+                            if (yoko == 6 && tate == 1) {    //左、斜左下、下
+                                for (int x = 0; yoko != 0 && tate != 7 && flag != 1; x++) {//左下検索
+                                    yoko = yoko - 1;
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 7 && flag != 1; x++) {   //下検索
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 0 && flag != 1; x++) {//左検索
+                                    yoko = yoko - 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                            }
+                            flag = 0;
+                            yoko = i;
+                            tate = j;
+                            if (yoko == 6 && (tate >= 2 && tate <= 5)) {    //上、左斜下、下、左斜上、左
+                                for (int x = 0; yoko != 0 && tate != 0 && flag != 1; x++) {//左斜上検索
+                                    yoko = yoko - 1;
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 7 && flag != 1; x++) {   //下検索
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 0 && flag != 1; x++) {//左検索
+                                    yoko = yoko - 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 0 && tate != 7 && flag != 1; x++) {//左下検索
+                                    yoko = yoko - 1;
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 0 && flag != 1; x++) {//上検索
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                            }
+                            flag = 0;
+                            yoko = i;
+                            tate = j;
+                            if ((yoko == 6 && tate == 6)) {    //左、斜左上、上
+                                for (int x = 0; tate != 0 && flag != 1; x++) {//上検索
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 0 && tate != 0 && flag != 1; x++) {//左斜上検索
+                                    yoko = yoko - 1;
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 0 && flag != 1; x++) {//左検索
+                                    yoko = yoko - 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                            }
+                            flag = 0;
+                            yoko = i;
+                            tate = j;
+                            if (tate == 6 && (yoko >= 2 && yoko <= 5)) {    //上、左斜上、右、左斜上、左
+                                for (int x = 0; yoko != 0 && tate != 0 && flag != 1; x++) {//左斜上検索
+                                    yoko = yoko - 1;
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 7 && flag != 1; x++) {   //右検索
+                                    yoko = yoko + 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 0 && flag != 1; x++) {//左検索
+                                    yoko = yoko - 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 7 && tate != 7 && flag != 1; x++) {  //右斜上検索
+                                    yoko = yoko + 1;
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 0 && flag != 1; x++) {//上検索
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                            }
+                            flag = 0;
+                            yoko = i;
+                            tate = j;
+                        }
+                        if ((yoko==0&&(tate>=0||tate<=7))||(yoko==7&&(tate>=0||tate<=7))||(tate==0&&(yoko>=0||yoko<=7))||(tate==7&&(yoko>=0||yoko<=7))){//外枠の場合
+                            if ((yoko == 0 && tate == 1) || (yoko == 1 && tate == 0) || (yoko == 0 && tate == 0)){//右、下、斜右下
+                                for (int x=0;yoko!=7&&flag!=1; x++) {//右検索
+                                    yoko=yoko+1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
                                 for (int x=0;yoko!=7&&tate!=7&&flag!=1; x++) {//右下検索
                                     yoko=yoko+1;
-                                    tate=tate +1;
+                                    tate = tate +1;
                                     if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
                                         flag = 1;
                                     } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
@@ -299,11 +896,47 @@ public class MainActivity extends AppCompatActivity {
                                 flag=0;
                                 yoko = i;
                                 tate = j;
-                                for (int x=0;yoko!=7&&flag!=1; x++) {//右検索
-                                    yoko=yoko+1;
+                            }
+                            if ((yoko == 7 && tate == 1) || (yoko == 6 && tate == 0) || (yoko == 7 && tate == 0)){//左、左斜下、下
+                                for (int x=0;tate!=7&&flag!=1; x++) {//下検索
+                                    tate=tate+1;
                                     if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
                                         flag = 1;
-                                        System.out.println("aaaaaaaaa");
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=0&&tate!=7&&flag!=1; x++) {//左下検索
+                                    yoko=yoko-1;
+                                    tate = tate+1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=0&&flag!=1; x++) {//左検索
+                                    yoko=yoko-1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
                                     } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
                                         if (x == 0) {//1週目
                                             flag = 1;
@@ -315,61 +948,9 @@ public class MainActivity extends AppCompatActivity {
                                     }//白の場合何もしない
                                 }
                             }
-                            if ((yoko==1&&tate>=2)||(yoko==1&&tate<=6)){    //右、斜右下、下、右斜上、上
-                                for(int x=0;yoko!=7&&tate!=7&&flag!=1; x++){//右下検索
-                                    yoko=yoko+1;
-                                    tate = tate +1;
-                                    if (button_flag[yoko][tate] == 1){  //黒の場合(黒ゴマ検索に行く)
-                                        flag = 1;
-                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
-                                        if (x == 0){//1週目
-                                            flag = 1;
-                                        }else{//2週目
-                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
-                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
-                                            flag=1;
-                                        }
-                                    }//白の場合何もしない
-                                }
-                                flag=0;
-                                yoko = i;
-                                tate = j;
-                                for (int x=0;tate!=7&&flag!=1; x++) {   //下検索
-                                    tate=tate+1;
-                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
-                                        flag = 1;
-                                    } else if (button_flag[yoko][tate]!=1&&button_flag[yoko][tate]!=2){//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
-                                        if(x==0){//1週目
-                                            flag = 1;
-                                        }else{//2週目
-                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
-                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
-                                            flag=1;
-                                        }
-                                    }//白の場合何もしない
-                                }
-                                flag=0;
-                                yoko = i;
-                                tate = j;
-                                for (int x=0;yoko!=7&&flag!=1; x++) {   //右検索
-                                    yoko=yoko+1;
-                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
-                                        flag=1;
-                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
-                                        if(x==0) {//1週目
-                                            flag = 1;
-                                        } else {//2週目
-                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
-                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
-                                            flag=1;
-                                        }
-                                    }//白の場合何もしない
-                                }
-                                flag=0;
-                                yoko = i;
-                                tate = j;
-                                for (int x=0;yoko!=7&&tate!=7&&flag!=1; x++) {  //右斜上検索
-                                    yoko=yoko+1;
+                            if ((yoko == 7 && tate == 6) || (yoko == 6 && tate == 7) || (yoko == 7 && tate == 7)){//上、斜左上、左
+                                for (int x=0;yoko!=0&&tate!=0&&flag!=1; x++) {//左斜上検索
+                                    yoko =yoko-1;
                                     tate=tate-1;
                                     if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
                                         flag = 1;
@@ -403,108 +984,1731 @@ public class MainActivity extends AppCompatActivity {
                                 flag=0;
                                 yoko = i;
                                 tate = j;
-                                if ((yoko==1&&tate==6)||(yoko==1&&tate==7)){    //右、斜右上、上
-                                    for (int x=0;yoko!=7&&tate!=7&&flag!=1; x++) {  //右斜上検索
-                                        yoko=yoko+1;
-                                        tate=tate-1;
-                                        if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                for (int x=0;yoko!=0&&flag!=1; x++) {//左検索
+                                    yoko=yoko-1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
                                             flag=1;
-                                        } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
-                                            if(x==0){//1週目
-                                                flag = 1;
-                                            } else {//2週目
-                                                rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
-                                                button_flag[yoko][tate] = 3;//黒コマが置ける場所
-                                                flag=1;
-                                            }
-                                        }//白の場合何もしない
-                                    }
-                                    flag=0;
-                                    yoko = i;
-                                    tate = j;
-                                    for (int x=0;tate!=0&&flag!=1; x++) {//上検索
-                                        tate=tate-1;
-                                        if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
-                                            flag = 1;
-                                        } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
-                                            if (x == 0) {//1週目
-                                                flag = 1;
-                                            } else {//2週目
-                                                rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
-                                                button_flag[yoko][tate] = 3;//黒コマが置ける場所
-                                                flag=1;
-                                            }
-                                        }//白の場合何もしない
-                                    }
-                                    flag=0;
-                                    yoko = i;
-                                    tate = j;
-                                    for (int x=0;yoko!=7&&flag!=1; x++) {//右検索
-                                        yoko=yoko+1;
-                                        if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
-                                            flag = 1;
-                                        } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
-                                            if(x==0){//1週目
-                                                flag = 1;
-                                            }else{//2週目
-                                                rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
-                                                button_flag[yoko][tate] = 3;//黒コマが置ける場所
-                                                flag=1;
-                                            }
-                                        }//白の場合何もしない
-                                    }
-                                    if ((yoko==1&&tate==6)||(yoko==1&&tate==7)) {    //右、斜右上、上
-                                        for (int x = 0; yoko != 7 && tate != 7 && flag != 1; x++) {  //右斜上検索
-                                            yoko = yoko + 1;
-                                            tate = tate - 1;
-                                            if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
-                                                flag = 1;
-                                            } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
-                                                if (x == 0) {//1週目
-                                                    flag = 1;
-                                                } else {//2週目
-                                                    rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
-                                                    button_flag[yoko][tate] = 3;//黒コマが置ける場所
-                                                    flag = 1;
-                                                }
-                                            }//白の場合何もしない
                                         }
-                                        flag = 0;
-                                        yoko = i;
-                                        tate = j;
-                                        for (int x = 0; tate != 0 && flag != 1; x++) {//上検索
-                                            tate = tate - 1;
-                                            if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
-                                                flag = 1;
-                                            } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
-                                                if (x == 0) {//1週目
-                                                    flag = 1;
-                                                } else {//2週目
-                                                    rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
-                                                    button_flag[yoko][tate] = 3;//黒コマが置ける場所
-                                                    flag = 1;
-                                                }
-                                            }//白の場合何もしない
-                                        }
-                                        flag = 0;
-                                        yoko = i;
-                                        tate = j;
-                                        for (int x = 0; yoko != 7 && flag != 1; x++) {//右検索
-                                            yoko = yoko + 1;
-                                            if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
-                                                flag = 1;
-                                            } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
-                                                if (x == 0) {//1週目
-                                                    flag = 1;
-                                                } else {//2週目
-                                                    rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
-                                                    button_flag[yoko][tate] = 3;//黒コマが置ける場所
-                                                    flag = 1;
-                                                }
-                                            }//白の場合何もしない
-                                        }
-                                    }
+                                    }//白の場合何もしない
                                 }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                            }
+                            if ((yoko == 7 && tate == 1) || (yoko == 6 && tate == 6) || (yoko == 0 && tate == 7)){//上、右斜上、右
+                                for (int x=0;tate!=0&&flag!=1; x++) {//上検索
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=7&&tate!=7&&flag!=1; x++) {//右斜上検索
+                                    yoko=yoko+1;
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=7&&flag!=1; x++) {//右検索
+                                    yoko=yoko+1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                            }
+                            if (tate == 0 && (yoko >=2 && yoko <=5)){//右、左、下、右下、左下
+                                for (int x=0;yoko!=7&&tate!=7&&flag!=1; x++) {//右下検索
+                                    yoko=yoko+1;
+                                    tate = tate +1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=7&&flag!=1; x++) {//右検索
+                                    yoko=yoko+1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=0&&flag!=1; x++) {//左検索
+                                    yoko=yoko-1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;tate!=7&&flag!=1; x++) {//下検索
+                                    tate=tate+1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=0&&tate!=7&&flag!=1; x++) {//左下検索
+                                    yoko=yoko-1;
+                                    tate = tate+1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                            }
+                            if (yoko == 7 && (tate >=2 && tate <=5)){//上、下、左、左上、左下、
+                                for (int x=0;yoko!=0&&tate!=0&&flag!=1; x++) {//左斜上検索
+                                    yoko =yoko-1;
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;tate!=0&&flag!=1; x++) {//上検索
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;tate!=7&&flag!=1; x++) {//下検索
+                                    tate=tate+1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=0&&tate!=7&&flag!=1; x++) {//左下検索
+                                    yoko=yoko-1;
+                                    tate = tate+1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=0&&flag!=1; x++) {//左検索
+                                    yoko=yoko-1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                            }
+                            if (tate == 7 && (yoko >=2 && yoko <=5)){//上、右、左、右上、左上
+                                for (int x=0;yoko!=0&&tate!=0&&flag!=1; x++) {//左斜上検索
+                                    yoko =yoko-1;
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=7&&tate!=7&&flag!=1; x++) {//右斜上検索
+                                    yoko=yoko+1;
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=7&&flag!=1; x++) {//右検索
+                                    yoko=yoko+1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;tate!=0&&flag!=1; x++) {//上検索
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=0&&flag!=1; x++) {//左検索
+                                    yoko=yoko-1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                            }
+                            if (yoko == 0 && (tate >=2 && tate <=5)){//上、右、右上、右下、下
+                                for (int x=0;yoko!=7&&tate!=7&&flag!=1; x++) {//右下検索
+                                    yoko=yoko+1;
+                                    tate = tate +1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=7&&tate!=7&&flag!=1; x++) {//右斜上検索
+                                    yoko=yoko+1;
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=7&&flag!=1; x++) {//右検索
+                                    yoko=yoko+1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;tate!=0&&flag!=1; x++) {//上検索
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;tate!=7&&flag!=1; x++) {//下検索
+                                    tate=tate+1;
+                                    if (button_flag[yoko][tate] == 1) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                            }
+                        }
+                    }
+                }
+            }
+        }else{  //白の場合
+            //白ゴマを探す
+            for (int i=0; i<8; i++){
+                for (int j=0; j<8; j++){
+                    if (button_flag[i][j]==2) {//黒ゴマがあった場合
+                        yoko = i;
+                        tate = j;
+                        if ((yoko>=2&&yoko<=5)&&(tate>=2&&tate<=5)) {//8方向検索
+                            for (int x=0;yoko!=0&&tate!=0&&flag!=1; x++) {//左斜上検索
+                                yoko =yoko-1;
+                                tate=tate-1;
+                                if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                    flag = 1;
+                                } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                    if (x == 0) {//1週目
+                                        flag = 1;
+                                    } else {//2週目
+                                        rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                        button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                        flag=1;
+                                    }
+                                }//白の場合何もしない
+                            }
+                            flag=0;
+                            yoko = i;
+                            tate = j;
+                            for (int x=0;tate!=0&&flag!=1; x++) {//上検索
+                                tate=tate-1;
+                                if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                    flag = 1;
+                                } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                    if (x == 0) {//1週目
+                                        flag = 1;
+                                    } else {//2週目
+                                        rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                        button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                        flag=1;
+                                    }
+                                }//白の場合何もしない
+                            }
+                            flag=0;
+                            yoko = i;
+                            tate = j;
+                            for (int x=0;yoko!=7&&tate!=7&&flag!=1; x++) {//右斜上検索
+                                yoko=yoko+1;
+                                tate=tate-1;
+                                if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                    flag = 1;
+                                } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                    if (x == 0) {//1週目
+                                        flag = 1;
+                                    } else {//2週目
+                                        rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                        button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                        flag=1;
+                                    }
+                                }//白の場合何もしない
+                            }
+                            flag=0;
+                            yoko = i;
+                            tate = j;
+                            for (int x=0;yoko!=7&&flag!=1; x++) {//右検索
+                                yoko=yoko+1;
+                                if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                    flag = 1;
+                                } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                    if (x == 0) {//1週目
+                                        flag = 1;
+                                    } else {//2週目
+                                        rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                        button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                        flag=1;
+                                    }
+                                }//白の場合何もしない
+                            }
+                            flag=0;
+                            yoko = i;
+                            tate = j;
+                            for (int x=0;yoko!=7&&tate!=7&&flag!=1; x++) {//右下検索
+                                yoko=yoko+1;
+                                tate = tate +1;
+                                if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                    flag = 1;
+                                } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                    if (x == 0) {//1週目
+                                        flag = 1;
+                                    } else {//2週目
+                                        rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                        button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                        flag=1;
+                                    }
+                                }//白の場合何もしない
+                            }
+                            flag=0;
+                            yoko = i;
+                            tate = j;
+                            for (int x=0;tate!=7&&flag!=1; x++) {//下検索
+                                tate=tate+1;
+                                if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                    flag = 1;
+                                } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                    if (x == 0) {//1週目
+                                        flag = 1;
+                                    } else {//2週目
+                                        rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                        button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                        flag=1;
+                                    }
+                                }//白の場合何もしない
+                            }
+                            flag=0;
+                            yoko = i;
+                            tate = j;
+                            for (int x=0;yoko!=0&&tate!=7&&flag!=1; x++) {//左下検索
+                                yoko=yoko-1;
+                                tate = tate+1;
+                                if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                    flag = 1;
+                                } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                    if (x == 0) {//1週目
+                                        flag = 1;
+                                    } else {//2週目
+                                        rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                        button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                        flag=1;
+                                    }
+                                }//白の場合何もしない
+                            }
+                            flag=0;
+                            yoko = i;
+                            tate = j;
+                            for (int x=0;yoko!=0&&flag!=1; x++) {//左検索
+                                yoko=yoko-1;
+                                if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                    flag = 1;
+                                } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                    if (x == 0) {//1週目
+                                        flag = 1;
+                                    } else {//2週目
+                                        rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                        button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                        flag=1;
+                                    }
+                                }//白の場合何もしない
+                            }
+                            flag=0;
+                            yoko = i;
+                            tate = j;
+                        }
+                        if ((yoko==1&&(tate>=1||tate<=6))||(yoko==6&&(tate>=1||tate<=6))||(tate==1&&(yoko>=1||yoko<=6))||(tate==6&&(yoko>=1||yoko<=6))) {   //外枠から2番目
+                            if (yoko == 1 && tate == 1) {//右、斜右下、下
+                                for (int x = 0; yoko != 7 && tate != 7 && flag != 1; x++) {//右下検索
+                                    yoko = yoko + 1;
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 7 && flag != 1; x++) {//下検索
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 7 && flag != 1; x++) {//右検索
+                                    yoko = yoko + 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                            }
+                            flag = 0;
+                            yoko = i;
+                            tate = j;
+                            if (yoko == 1 && (tate >= 2 && tate <= 5)) {    //右、斜右下、下、右斜上、上
+                                for (int x = 0; yoko != 7 && tate != 7 && flag != 1; x++) {//右下検索
+                                    yoko = yoko + 1;
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 2) {  //黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 7 && flag != 1; x++) {   //下検索
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 7 && flag != 1; x++) {   //右検索
+                                    yoko = yoko + 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 7 && tate != 7 && flag != 1; x++) {  //右斜上検索
+                                    yoko = yoko + 1;
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 0 && flag != 1; x++) {//上検索
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                            }
+                            flag = 0;
+                            yoko = i;
+                            tate = j;
+                            if (yoko == 1 && tate == 6) {    //右、斜右上、上
+                                for (int x = 0; yoko != 7 && tate != 7 && flag != 1; x++) {  //右斜上検索
+                                    yoko = yoko + 1;
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 0 && flag != 1; x++) {//上検索
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 7 && flag != 1; x++) {//右検索
+                                    yoko = yoko + 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                            }
+                            flag = 0;
+                            yoko = i;
+                            tate = j;
+                            if (tate == 1 && (yoko >= 2 && yoko <= 5)) {    //右、左斜下、下、右斜下、左
+                                for (int x = 0; yoko != 7 && tate != 7 && flag != 1; x++) {//右下検索
+                                    yoko = yoko + 1;
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 2) {  //黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 7 && flag != 1; x++) {   //下検索
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 7 && flag != 1; x++) {   //右検索
+                                    yoko = yoko + 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 0 && tate != 7 && flag != 1; x++) {//左下検索
+                                    yoko = yoko - 1;
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 0 && flag != 1; x++) {//左検索
+                                    yoko = yoko - 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                            }
+                            flag = 0;
+                            yoko = i;
+                            tate = j;
+                            if (yoko == 6 && tate == 1) {    //左、斜左下、下
+                                for (int x = 0; yoko != 0 && tate != 7 && flag != 1; x++) {//左下検索
+                                    yoko = yoko - 1;
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 7 && flag != 1; x++) {   //下検索
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 0 && flag != 1; x++) {//左検索
+                                    yoko = yoko - 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                            }
+                            flag = 0;
+                            yoko = i;
+                            tate = j;
+                            if (yoko == 6 && (tate >= 2 && tate <= 5)) {    //上、左斜下、下、左斜上、左
+                                for (int x = 0; yoko != 0 && tate != 0 && flag != 1; x++) {//左斜上検索
+                                    yoko = yoko - 1;
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 7 && flag != 1; x++) {   //下検索
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 0 && flag != 1; x++) {//左検索
+                                    yoko = yoko - 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 0 && tate != 7 && flag != 1; x++) {//左下検索
+                                    yoko = yoko - 1;
+                                    tate = tate + 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 0 && flag != 1; x++) {//上検索
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                            }
+                            flag = 0;
+                            yoko = i;
+                            tate = j;
+                            if ((yoko == 6 && tate == 6)) {    //左、斜左上、上
+                                for (int x = 0; tate != 0 && flag != 1; x++) {//上検索
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 0 && tate != 0 && flag != 1; x++) {//左斜上検索
+                                    yoko = yoko - 1;
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 0 && flag != 1; x++) {//左検索
+                                    yoko = yoko - 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                            }
+                            flag = 0;
+                            yoko = i;
+                            tate = j;
+                            if (tate == 6 && (yoko >= 2 && yoko <= 5)) {    //上、左斜上、右、左斜上、左
+                                for (int x = 0; yoko != 0 && tate != 0 && flag != 1; x++) {//左斜上検索
+                                    yoko = yoko - 1;
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 7 && flag != 1; x++) {   //右検索
+                                    yoko = yoko + 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 3;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 0 && flag != 1; x++) {//左検索
+                                    yoko = yoko - 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; yoko != 7 && tate != 7 && flag != 1; x++) {  //右斜上検索
+                                    yoko = yoko + 1;
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                                for (int x = 0; tate != 0 && flag != 1; x++) {//上検索
+                                    tate = tate - 1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag = 1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag = 0;
+                                yoko = i;
+                                tate = j;
+                            }
+                            flag = 0;
+                            yoko = i;
+                            tate = j;
+                        }
+                        if ((yoko==0&&(tate>=0||tate<=7))||(yoko==7&&(tate>=0||tate<=7))||(tate==0&&(yoko>=0||yoko<=7))||(tate==7&&(yoko>=0||yoko<=7))){//外枠の場合
+                            if ((yoko == 0 && tate == 1) || (yoko == 1 && tate == 0) || (yoko == 0 && tate == 0)){//右、下、斜右下
+                                for (int x=0;yoko!=7&&flag!=1; x++) {//右検索
+                                    yoko=yoko+1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=7&&tate!=7&&flag!=1; x++) {//右下検索
+                                    yoko=yoko+1;
+                                    tate = tate +1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;tate!=7&&flag!=1; x++) {//下検索
+                                    tate=tate+1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                            }
+                            if ((yoko == 7 && tate == 1) || (yoko == 6 && tate == 0) || (yoko == 7 && tate == 0)){//左、左斜下、下
+                                for (int x=0;tate!=7&&flag!=1; x++) {//下検索
+                                    tate=tate+1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=0&&tate!=7&&flag!=1; x++) {//左下検索
+                                    yoko=yoko-1;
+                                    tate = tate+1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=0&&flag!=1; x++) {//左検索
+                                    yoko=yoko-1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                            }
+                            if ((yoko == 7 && tate == 6) || (yoko == 6 && tate == 7) || (yoko == 7 && tate == 7)){//上、斜左上、左
+                                for (int x=0;yoko!=0&&tate!=0&&flag!=1; x++) {//左斜上検索
+                                    yoko =yoko-1;
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;tate!=0&&flag!=1; x++) {//上検索
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=0&&flag!=1; x++) {//左検索
+                                    yoko=yoko-1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                            }
+                            if ((yoko == 7 && tate == 1) || (yoko == 6 && tate == 6) || (yoko == 0 && tate == 7)){//上、右斜上、右
+                                for (int x=0;tate!=0&&flag!=1; x++) {//上検索
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=7&&tate!=7&&flag!=1; x++) {//右斜上検索
+                                    yoko=yoko+1;
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=7&&flag!=1; x++) {//右検索
+                                    yoko=yoko+1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                            }
+                            if (tate == 0 && (yoko >=2 && yoko <=5)){//右、左、下、右下、左下
+                                for (int x=0;yoko!=7&&tate!=7&&flag!=1; x++) {//右下検索
+                                    yoko=yoko+1;
+                                    tate = tate +1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=7&&flag!=1; x++) {//右検索
+                                    yoko=yoko+1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=0&&flag!=1; x++) {//左検索
+                                    yoko=yoko-1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;tate!=7&&flag!=1; x++) {//下検索
+                                    tate=tate+1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=0&&tate!=7&&flag!=1; x++) {//左下検索
+                                    yoko=yoko-1;
+                                    tate = tate+1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                            }
+                            if (yoko == 7 && (tate >=2 && tate <=5)){//上、下、左、左上、左下、
+                                for (int x=0;yoko!=0&&tate!=0&&flag!=1; x++) {//左斜上検索
+                                    yoko =yoko-1;
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;tate!=0&&flag!=1; x++) {//上検索
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;tate!=7&&flag!=1; x++) {//下検索
+                                    tate=tate+1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=0&&tate!=7&&flag!=1; x++) {//左下検索
+                                    yoko=yoko-1;
+                                    tate = tate+1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=0&&flag!=1; x++) {//左検索
+                                    yoko=yoko-1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                            }
+                            if (tate == 7 && (yoko >=2 && yoko <=5)){//上、右、左、右上、左上
+                                for (int x=0;yoko!=0&&tate!=0&&flag!=1; x++) {//左斜上検索
+                                    yoko =yoko-1;
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=7&&tate!=7&&flag!=1; x++) {//右斜上検索
+                                    yoko=yoko+1;
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=7&&flag!=1; x++) {//右検索
+                                    yoko=yoko+1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;tate!=0&&flag!=1; x++) {//上検索
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=0&&flag!=1; x++) {//左検索
+                                    yoko=yoko-1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                            }
+                            if (yoko == 0 && (tate >=2 && tate <=5)){//上、右、右上、右下、下
+                                for (int x=0;yoko!=7&&tate!=7&&flag!=1; x++) {//右下検索
+                                    yoko=yoko+1;
+                                    tate = tate +1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=7&&tate!=7&&flag!=1; x++) {//右斜上検索
+                                    yoko=yoko+1;
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;yoko!=7&&flag!=1; x++) {//右検索
+                                    yoko=yoko+1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;tate!=0&&flag!=1; x++) {//上検索
+                                    tate=tate-1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
+                                yoko = i;
+                                tate = j;
+                                for (int x=0;tate!=7&&flag!=1; x++) {//下検索
+                                    tate=tate+1;
+                                    if (button_flag[yoko][tate] == 2) {//黒の場合(黒ゴマ検索に行く)
+                                        flag = 1;
+                                    } else if (button_flag[yoko][tate] != 1 && button_flag[yoko][tate] != 2) {//何もない場合(1週目:黒ゴマ検索に行)(2週目以降:put画像配置)
+                                        if (x == 0) {//1週目
+                                            flag = 1;
+                                        } else {//2週目
+                                            rectButtons[yoko][tate].setBackgroundResource(R.drawable.put);
+                                            button_flag[yoko][tate] = 4;//黒コマが置ける場所
+                                            flag=1;
+                                        }
+                                    }//白の場合何もしない
+                                }
+                                flag=0;
                             }
                         }
                     }
