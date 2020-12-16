@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private ImageButton[][] rectButtons = new ImageButton[8][8];
-    private int k=0;
     private int[][] button_flag = new int[8][8];
 
     @Override
@@ -418,7 +417,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        int flag=0;
         //先行かどうか判断
         if (first==1){
             //黒ゴマを探す
@@ -673,14 +671,11 @@ public class MainActivity extends AppCompatActivity {
                 aImageButton.setBackgroundResource(R.drawable.kuro);
                 button_flag[i][j] = 1;
                 reverce(i,j,1);
-        }else if (button_flag[i][j] == 4){
-            System.out.println("おけ1");
+        }
+        if (button_flag[i][j] == 4){
             aImageButton.setBackgroundResource(R.drawable.siro);
-            System.out.println("おけ2");
             button_flag[i][j] = 2;
-            System.out.println("おけ3");
             reverce(i,j,2);
-            System.out.println("おけ4");
         }
     }
 
@@ -689,6 +684,7 @@ public class MainActivity extends AppCompatActivity {
         int y=i;//置かれた場所の配置
         int t=j;
         if (senkou==1){
+            System.out.println("黒:左上:1");
             if (button_flag[y-1][t-1] == 2) {
                 flag=0;
                 i=y;
@@ -706,7 +702,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-
+            System.out.println("黒:上:2");
             if (button_flag[y][t-1] == 2) {
                 flag=0;
                 i=y;
@@ -722,7 +718,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-
+            System.out.println("黒:右上:3");
             if (button_flag[y+1][t-1] == 2) {
                 flag=0;
                 i=y;
@@ -740,7 +736,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-
+            System.out.println("黒:右:4");
             if (button_flag[y+1][t] == 2) {
                 flag=0;
                 i=y;
@@ -756,6 +752,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+            System.out.println("黒:右下:5");
             if (button_flag[y+1][t+1] == 2) {
                 flag=0;
                 i=y;
@@ -773,11 +770,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+            System.out.println("黒:下:6");
             if (button_flag[y][t+1] == 2) {
                 flag=0;
                 i=y;
                 j=t;
-                for (int x = 0; j != 7 && flag != 1; x++) {//上検索
+                for (int x = 0; j != 7 && flag != 1; x++) {//下検索
                     j = j + 1;
                     if (button_flag[i][j] == 1) {//黒の場合(黒ゴマ検索に行く)
                         for (int v=1; j!=t; v++) {
@@ -788,11 +786,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+            System.out.println("黒:左下:7");
             if (button_flag[y-1][t+1] == 2) {
                 flag=0;
                 i=y;
                 j=t;
-                for (int x = 0; i != 0 && j != 7 && flag != 1; x++) {//右斜上検索
+                for (int x = 0; i != 0 && j != 7 && flag != 1; x++) {//左下検索
                     i = i - 1;
                     j = j + 1;
                     if (button_flag[i][j] == 1) {//黒の場合(黒ゴマ検索に行く)
@@ -805,6 +804,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+            System.out.println("黒:左:8");
             if (button_flag[y-1][t] == 2) {
                 flag=0;
                 i=y;
@@ -822,6 +822,7 @@ public class MainActivity extends AppCompatActivity {
             }
             ex_put(2);
         }else {
+            System.out.println("白:左上:1");
             if (button_flag[y-1][t-1] == 1) {
                 flag=0;
                 i=y;
@@ -839,6 +840,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+            System.out.println("白:上:2");
             if (button_flag[y][t-1] == 1) {
                 flag=0;
                 i=y;
@@ -854,11 +856,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+            System.out.println("白:右上:3");
             if (button_flag[y+1][t-1] == 1) {
                 flag=0;
                 i=y;
                 j=t;
-                for (int x = 0; i != 7 && j != 7 && flag != 1; x++) {//右斜上検索
+                for (int x=0; i!=7 && j!=0 && flag!=1; x++) {//右斜上検索
                     i = i + 1;
                     j = j - 1;
                     if (button_flag[i][j] == 2) {//黒の場合(黒ゴマ検索に行く)
@@ -871,6 +874,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+            System.out.println("白:右:4");
             if (button_flag[y+1][t] == 1) {
                 flag=0;
                 i=y;
@@ -886,6 +890,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+            System.out.println("白:右下:5");
             if (button_flag[y+1][t+1] == 1) {
                 flag=0;
                 i=y;
@@ -903,11 +908,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+            System.out.println("白:下:6");
             if (button_flag[y][t+1] == 1) {
                 flag=0;
                 i=y;
                 j=t;
-                for (int x = 0; j != 7 && flag != 1; x++) {//上検索
+                for (int x = 0; j != 7 && flag != 1; x++) {//下検索
                     j = j + 1;
                     if (button_flag[i][j] == 2) {//黒の場合(黒ゴマ検索に行く)
                         for (int v=1; j!=t; v++) {
@@ -918,11 +924,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+            System.out.println("白:左下:7");
             if (button_flag[y-1][t+1] == 1) {
                 flag=0;
                 i=y;
                 j=t;
-                for (int x = 0; i != 0 && j != 7 && flag != 1; x++) {//右斜上検索
+                for (int x = 0; i != 0 && j != 7 && flag != 1; x++) {//左下検索
                     i = i - 1;
                     j = j + 1;
                     if (button_flag[i][j] == 2) {//黒の場合(黒ゴマ検索に行く)
@@ -935,6 +942,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+            System.out.println("白:左:8");
             if (button_flag[y-1][t] == 1) {
                 flag = 0;
                 i = y;
