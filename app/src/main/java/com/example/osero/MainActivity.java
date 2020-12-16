@@ -97,44 +97,6 @@ public class MainActivity extends AppCompatActivity {
         rectButtons[4][4].setBackgroundResource(R.drawable.kuro);
         rectButtons[3][4].setBackgroundResource(R.drawable.siro);
         rectButtons[4][3].setBackgroundResource(R.drawable.siro);
-//        rectButtons[2][2].setBackgroundResource(R.drawable.siro);
-//        rectButtons[3][2].setBackgroundResource(R.drawable.siro);
-//        rectButtons[2][4].setBackgroundResource(R.drawable.siro);
-//        rectButtons[3][4].setBackgroundResource(R.drawable.siro);
-//        rectButtons[4][4].setBackgroundResource(R.drawable.siro);
-//        rectButtons[4][2].setBackgroundResource(R.drawable.siro);
-//        rectButtons[4][3].setBackgroundResource(R.drawable.siro);
-//        rectButtons[2][3].setBackgroundResource(R.drawable.siro);
-//        rectButtons[1][1].setBackgroundResource(R.drawable.kuro);
-//        rectButtons[1][3].setBackgroundResource(R.drawable.kuro);
-//        rectButtons[1][5].setBackgroundResource(R.drawable.kuro);
-//        rectButtons[3][1].setBackgroundResource(R.drawable.kuro);
-//        rectButtons[3][5].setBackgroundResource(R.drawable.kuro);
-//        rectButtons[5][1].setBackgroundResource(R.drawable.kuro);
-//        rectButtons[5][3].setBackgroundResource(R.drawable.kuro);
-//        rectButtons[5][5].setBackgroundResource(R.drawable.kuro);
-
-        //rectButtons[3][3].setBackgroundResource(R.drawable.kuro);
-
-
-//        button_flag[2][2]=2;
-//        button_flag[3][2]=2;
-//        button_flag[2][4]=2;
-//        button_flag[3][4]=2;
-//        button_flag[4][4]=2;
-//        button_flag[4][2]=2;
-//        button_flag[4][3]=2;
-//        button_flag[2][3]=2;
-//        button_flag[1][1]=1;
-//        button_flag[1][3]=1;
-//        button_flag[1][5]=1;
-//        button_flag[3][1]=1;
-//        button_flag[3][5]=1;
-//        button_flag[5][1]=1;
-//        button_flag[5][3]=1;
-//        button_flag[5][5]=1;
-
-
 
         //黒:1 白:2
         button_flag[3][3] = 1;
@@ -499,7 +461,7 @@ public class MainActivity extends AppCompatActivity {
                                 put(i,j,8,1);//左
                                 put(i,j,2,1);//上
                             }
-                            if ((i == 7 && j == 1) || (i == 6 && j == 6) || (i == 0 && j == 7)){//上、右斜上、右
+                            if ((i == 0 && j == 6) || (i == 1 && j == 7) || (i == 0 && j == 7)){//上、右斜上、右
                                 put(i,j,2,1);//上
                                 put(i,j,3,1);//右上
                                 put(i,j,4,1);//右
@@ -617,7 +579,7 @@ public class MainActivity extends AppCompatActivity {
                                 put(i,j,2,2);//上
                                 put(i,j,8,2);//左
                             }
-                            if ((i == 7 && j == 1) || (i == 6 && j == 6) || (i == 0 && j == 7)){//上、右斜上、右
+                            if ((i == 0 && j == 6) || (i == 1 && j == 7) || (i == 0 && j == 7)){//上、右斜上、右
                                 put(i,j,2,2);//上
                                 put(i,j,3,2);//右上
                                 put(i,j,4,2);//右
@@ -679,159 +641,116 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void reverce(int i, int j, int senkou){
+    //置換えメソッド
+    private void retrun(int i, int j, int v, int s) {
         int flag = 0;
-        int y=i;//置かれた場所の配置
-        int t=j;
-        if (senkou==1){
-            System.out.println("黒:左上:1");
-            if (button_flag[y-1][t-1] == 2) {
-                flag=0;
-                i=y;
-                j=t;
+        int y = i;
+        int t = j;
+        if (s == 1) {
+            if (v == 1) {
                 for (int x = 0; i != 0 && j != 00 && flag != 1; x++) {//左斜検索
                     i = i - 1;
                     j = j - 1;
                     if (button_flag[i][j] == 1) {//黒の場合(黒ゴマ検索に行く)
-                        for (int v=1; i!=y&&j!=t; v++) {
-                            i=i+1;
-                            j=j+1;
-                            rever(i,j,1);
-                            flag=1;
+                        for (int k = 1; i != y && j != t; k++) {
+                            i = i + 1;
+                            j = j + 1;
+                            rever(i, j, 1);
+                            flag = 1;
                         }
                     }
                 }
-            }
-            System.out.println("黒:上:2");
-            if (button_flag[y][t-1] == 2) {
-                flag=0;
-                i=y;
-                j=t;
+            } else if (v == 2) {
                 for (int x = 0; j != 0 && flag != 1; x++) {//上検索
                     j = j - 1;
                     if (button_flag[i][j] == 1) {//黒の場合(黒ゴマ検索に行く)
-                        for (int v=1; j!=t; v++) {
-                            j=j+1;
-                            rever(i,j,1);
-                            flag=1;
+                        for (int k = 1; j != t; k++) {
+                            j = j + 1;
+                            rever(i, j, 1);
+                            flag = 1;
                         }
                     }
                 }
-            }
-            System.out.println("黒:右上:3");
-            if (button_flag[y+1][t-1] == 2) {
-                flag=0;
-                i=y;
-                j=t;
-                for (int x = 0; i != 7 && j != 7 && flag != 1; x++) {//右斜上検索
+            } else if (v == 3) {
+                for (int x = 0; i != 7 && j != 0 && flag != 1; x++) {//右斜上検索
                     i = i + 1;
                     j = j - 1;
                     if (button_flag[i][j] == 1) {//黒の場合(黒ゴマ検索に行く)
-                        for (int v=1; i!=y&&j!=t; v++) {
-                            i=i-1;
-                            j=j+1;
-                            rever(i,j,1);
-                            flag=1;
+                        for (int k = 1; i != y && j != t; k++) {
+                            i = i - 1;
+                            j = j + 1;
+                            rever(i, j, 1);
+                            flag = 1;
                         }
                     }
                 }
-            }
-            System.out.println("黒:右:4");
-            if (button_flag[y+1][t] == 2) {
-                flag=0;
-                i=y;
-                j=t;
+            } else if (v == 4) {
                 for (int x = 0; i != 7 && flag != 1; x++) {//右検索
                     i = i + 1;
                     if (button_flag[i][j] == 1) {//黒の場合(黒ゴマ検索に行く)
-                        for (int v=1; i!=y; v++) {
-                            i=i-1;
-                            rever(i,j,1);
-                            flag=1;
+                        for (int k = 1; i != y; k++) {
+                            i = i - 1;
+                            rever(i, j, 1);
+                            flag = 1;
                         }
                     }
                 }
-            }
-            System.out.println("黒:右下:5");
-            if (button_flag[y+1][t+1] == 2) {
-                flag=0;
-                i=y;
-                j=t;
+            } else if (v == 5) {
                 for (int x = 0; i != 7 && j != 7 && flag != 1; x++) {//右下検索
                     i = i + 1;
                     j = j + 1;
                     if (button_flag[i][i] == 1) {
-                        for (int v=1; i!=y&&j!=t; v++) {
-                            i=i-1;
-                            j=j-1;
-                            rever(i,j,1);
-                            flag=1;
+                        for (int k = 1; i != y && j != t; k++) {
+                            i = i - 1;
+                            j = j - 1;
+                            rever(i, j, 1);
+                            flag = 1;
                         }
                     }
                 }
-            }
-            System.out.println("黒:下:6");
-            if (button_flag[y][t+1] == 2) {
-                flag=0;
-                i=y;
-                j=t;
+            } else if (v == 6) {
                 for (int x = 0; j != 7 && flag != 1; x++) {//下検索
                     j = j + 1;
                     if (button_flag[i][j] == 1) {//黒の場合(黒ゴマ検索に行く)
-                        for (int v=1; j!=t; v++) {
-                            j=j-1;
-                            rever(i,j,1);
-                            flag=1;
+                        for (int k = 1; j != t; k++) {
+                            j = j - 1;
+                            rever(i, j, 1);
+                            flag = 1;
                         }
                     }
                 }
-            }
-            System.out.println("黒:左下:7");
-            if (button_flag[y-1][t+1] == 2) {
-                flag=0;
-                i=y;
-                j=t;
+            } else if (v == 7) {
                 for (int x = 0; i != 0 && j != 7 && flag != 1; x++) {//左下検索
                     i = i - 1;
                     j = j + 1;
                     if (button_flag[i][j] == 1) {//黒の場合(黒ゴマ検索に行く)
-                        for (int v=1; i!=y&&j!=t; v++) {
-                            i=i+1;
-                            j=j-1;
-                            rever(i,j,1);
-                            flag=1;
+                        for (int k = 1; i != y && j != t; k++) {
+                            i = i + 1;
+                            j = j - 1;
+                            rever(i, j, 1);
+                            flag = 1;
                         }
                     }
                 }
-            }
-            System.out.println("黒:左:8");
-            if (button_flag[y-1][t] == 2) {
-                flag=0;
-                i=y;
-                j=t;
-                for (int x=0;i!=0&&flag!=1; x++) {//左検索
-                    i=i-1;
+            } else if (v == 8) {
+                for (int x = 0; i != 0 && flag != 1; x++) {//左検索
+                    i = i - 1;
                     if (button_flag[i][j] == 1) {
-                        for (int v=1; i!=y; v++){
-                            i=i+1;
-                            rever(i,j,1);
-                            flag=1;
+                        for (int k = 1; i != y; k++) {
+                            i = i + 1;
+                            rever(i, j, 1);
+                            flag = 1;
                         }
                     }
                 }
             }
-            ex_put(2);
-        }else {
-            System.out.println("白:左上:1");
-            if (button_flag[y-1][t-1] == 1) {
-                flag=0;
-                i=y;
-                j=t;
+        } else {
+            if (v == 1) {
                 for (int x = 0; i != 0 && j != 00 && flag != 1; x++) {//左斜検索
                     i = i - 1;
                     j = j - 1;
                     if (button_flag[i][j] == 2) {//黒の場合(黒ゴマ検索に行く)
-                        for (int v=1; i!=y&&j!=t; v++) {
+                        for (int k=1; i!=y&&j!=t; k++) {
                             i=i+1;
                             j=j+1;
                             rever(i,j,2);
@@ -839,33 +758,23 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
-            }
-            System.out.println("白:上:2");
-            if (button_flag[y][t-1] == 1) {
-                flag=0;
-                i=y;
-                j=t;
+            } else if (v == 2) {
                 for (int x = 0; j != 0 && flag != 1; x++) {//上検索
                     j = j - 1;
                     if (button_flag[i][j] == 2) {//黒の場合(黒ゴマ検索に行く)
-                        for (int v=1; j!=t; v++) {
+                        for (int k=1; j!=t; k++) {
                             j=j+1;
                             rever(i,j,2);
                             flag=1;
                         }
                     }
                 }
-            }
-            System.out.println("白:右上:3");
-            if (button_flag[y+1][t-1] == 1) {
-                flag=0;
-                i=y;
-                j=t;
+            } else if (v == 3) {
                 for (int x=0; i!=7 && j!=0 && flag!=1; x++) {//右斜上検索
                     i = i + 1;
                     j = j - 1;
                     if (button_flag[i][j] == 2) {//黒の場合(黒ゴマ検索に行く)
-                        for (int v=1; i!=y&&j!=t; v++) {
+                        for (int k=1; i!=y&&j!=t; k++) {
                             i=i-1;
                             j=j+1;
                             rever(i,j,2);
@@ -873,33 +782,23 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
-            }
-            System.out.println("白:右:4");
-            if (button_flag[y+1][t] == 1) {
-                flag=0;
-                i=y;
-                j=t;
+            } else if (v == 4) {
                 for (int x = 0; i != 7 && flag != 1; x++) {//右検索
                     i = i + 1;
                     if (button_flag[i][j] == 2) {//黒の場合(黒ゴマ検索に行く)
-                        for (int v=1; i!=y; v++) {
+                        for (int k=1; i!=y; k++) {
                             i=i-1;
                             rever(i,j,2);
                             flag=1;
                         }
                     }
                 }
-            }
-            System.out.println("白:右下:5");
-            if (button_flag[y+1][t+1] == 1) {
-                flag=0;
-                i=y;
-                j=t;
+            } else if (v == 5) {
                 for (int x = 0; i != 7 && j != 7 && flag != 1; x++) {//右下検索
                     i = i + 1;
                     j = j + 1;
                     if (button_flag[i][i] == 2) {
-                        for (int v=1; i!=y&&j!=t; v++) {
+                        for (int k=1; i!=y&&j!=t; k++) {
                             i=i-1;
                             j=j-1;
                             rever(i,j,2);
@@ -907,33 +806,23 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
-            }
-            System.out.println("白:下:6");
-            if (button_flag[y][t+1] == 1) {
-                flag=0;
-                i=y;
-                j=t;
+            } else if (v == 6) {
                 for (int x = 0; j != 7 && flag != 1; x++) {//下検索
                     j = j + 1;
                     if (button_flag[i][j] == 2) {//黒の場合(黒ゴマ検索に行く)
-                        for (int v=1; j!=t; v++) {
+                        for (int k=1; j!=t; k++) {
                             j=j-1;
                             rever(i,j,2);
                             flag=1;
                         }
                     }
                 }
-            }
-            System.out.println("白:左下:7");
-            if (button_flag[y-1][t+1] == 1) {
-                flag=0;
-                i=y;
-                j=t;
+            } else if (v == 7) {
                 for (int x = 0; i != 0 && j != 7 && flag != 1; x++) {//左下検索
                     i = i - 1;
                     j = j + 1;
                     if (button_flag[i][j] == 2) {//黒の場合(黒ゴマ検索に行く)
-                        for (int v=1; i!=y&&j!=t; v++) {
+                        for (int k=1; i!=y&&j!=t; k++) {
                             i=i+1;
                             j=j-1;
                             rever(i,j,2);
@@ -941,16 +830,11 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
-            }
-            System.out.println("白:左:8");
-            if (button_flag[y-1][t] == 1) {
-                flag = 0;
-                i = y;
-                j = t;
+            } else if (v == 8) {
                 for (int x = 0; i != 0 && flag != 1; x++) {//左検索
                     i = i - 1;
                     if (button_flag[i][j] == 2) {
-                        for (int v = 1; i != y; v++) {
+                        for (int k = 1; i != y; k++) {
                             i = i + 1;
                             rever(i, j, 2);
                             flag = 1;
@@ -958,6 +842,165 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+        }
+    }
+
+    private void reverce(int i, int j, int senkou){
+        int y=i;
+        int t=j;
+        if (senkou==1){
+            if ((i==0&&(j>=0||j<=7))||(i==7&&(j>=0||j<=7))||(j==0&&(i>=0||i<=7))||(j==7&&(i>=0||i<=7))){
+                if ((i == 0 && j == 1) || (i == 1 && j == 0) || (i == 0 && j == 0)){//右、下、斜右下
+                    retrun(y,t,4,1);//右
+                    retrun(y,t,6,1);//下
+                    retrun(y,t,5,1);//右下
+                }
+                if ((i == 7 && j == 1) || (i == 6 && j == 0) || (i == 7 && j == 0)){//左、左斜下、下
+                    retrun(y,t,8,1);//左
+                    retrun(y,t,6,1);//下
+                    retrun(y,t,7,1);//左下
+                }
+                if ((i == 7 && j == 6) || (i == 6 && j == 7) || (i == 7 && j == 7)){//上、斜左上、左
+                    retrun(y,t,1,1);//左上
+                    retrun(y,t,8,1);//左
+                    retrun(y,t,2,1);//上
+                }
+                if ((i == 0 && j == 6) || (i == 1 && j == 7) || (i == 0 && j == 7)){//上、右斜上、右
+                    retrun(y,t,2,1);//上
+                    retrun(y,t,3,1);//右上
+                    retrun(y,t,4,1);//右
+                }
+                if (j == 0 && (i >=2 && i <=5)){//右、左、下、右下、左下
+                    retrun(y,t,5,1);//右下
+                    retrun(y,t,4,1);//右
+                    retrun(y,t,8,1);//左
+                    retrun(y,t,6,1);//下
+                    retrun(y,t,7,1);//左下
+                }
+                if (i == 7 && (j >=2 && j <=5)){//上、下、左、左上、左下、
+                    retrun(y,t,1,1);//左上
+                    retrun(y,t,2,1);//上
+                    retrun(y,t,6,1);//下
+                    retrun(y,t,7,1);//左下
+                    retrun(y,t,8,1);//左
+                }
+                if (j == 7 && (i >=2 && i <=5)){//上、右、左、右上、左上
+                    retrun(y,t,1,1);//左上
+                    retrun(y,t,3,1);//右上
+                    retrun(y,t,4,1);//右
+                    retrun(y,t,2,1);//上
+                    retrun(y,t,8,1);//左
+                }
+                if (i == 0 && (j >=2 && j <=5)){//上、右、右上、右下、下
+                    retrun(y,t,5,1);//右下
+                    retrun(y,t,3,1);//右上
+                    retrun(y,t,4,1);//右
+                    retrun(y,t,2,1);//上
+                    retrun(y,t,6,1);//下
+                }
+            }else{
+                if (button_flag[y - 1][t - 1] == 2) {
+                    retrun(y,t,1,1);
+                }
+                if (button_flag[y][t - 1] == 2) {
+                    retrun(y,t,2,1);
+                }
+                if (button_flag[y + 1][t - 1] == 2) {
+                    retrun(y,t,3,1);
+                }
+                if (button_flag[y + 1][t] == 2) {
+                    retrun(y,t,4,1);
+                }
+                if (button_flag[y + 1][t + 1] == 2) {
+                    retrun(y,t,5,1);
+                }
+                if (button_flag[y][t + 1] == 2) {
+                    retrun(y,t,6,1);
+                }
+                if (button_flag[y - 1][t + 1] == 2) {
+                    retrun(y,t,7,1);
+                }
+                if (button_flag[y - 1][t] == 2) {
+                    retrun(y,t,8,1);
+                }
+            }
+            ex_put(2);
+        }else{
+            if ((i==0&&(j>=0||j<=7))||(i==7&&(j>=0||j<=7))||(j==0&&(i>=0||i<=7))||(j==7&&(i>=0||i<=7))){
+                if ((i == 0 && j == 1) || (i == 1 && j == 0) || (i == 0 && j == 0)){//右、下、斜右下
+                    retrun(y,t,4,2);//右
+                    retrun(y,t,6,2);//下
+                    retrun(y,t,5,2);//右下
+                }
+                if ((i == 7 && j == 1) || (i == 6 && j == 0) || (i == 7 && j == 0)){//左、左斜下、下
+                    retrun(y,t,8,2);//左
+                    retrun(y,t,6,2);//下
+                    retrun(y,t,7,2);//左下
+                }
+                if ((i == 7 && j == 6) || (i == 6 && j == 7) || (i == 7 && j == 7)){//上、斜左上、左
+                    retrun(y,t,1,2);//左上
+                    retrun(y,t,8,2);//左
+                    retrun(y,t,2,2);//上
+                }
+                if ((i == 0 && j == 6) || (i == 1 && j == 7) || (i == 0 && j == 7)){//上、右斜上、右
+                    retrun(y,t,2,2);//上
+                    retrun(y,t,3,2);//右上
+                    retrun(y,t,4,2);//右
+                }
+                if (j == 0 && (i >=2 && i <=5)){//右、左、下、右下、左下
+                    retrun(y,t,5,2);//右下
+                    retrun(y,t,4,2);//右
+                    retrun(y,t,8,2);//左
+                    retrun(y,t,6,2);//下
+                    retrun(y,t,7,2);//左下
+                }
+                if (i == 7 && (j >=2 && j <=5)){//上、下、左、左上、左下、
+                    retrun(y,t,1,2);//左上
+                    retrun(y,t,2,2);//上
+                    retrun(y,t,6,2);//下
+                    retrun(y,t,7,2);//左下
+                    retrun(y,t,8,2);//左
+                }
+                if (j == 7 && (i >=2 && i <=5)){//上、右、左、右上、左上
+                    retrun(y,t,1,2);//左上
+                    retrun(y,t,3,2);//右上
+                    retrun(y,t,4,2);//右
+                    retrun(y,t,2,2);//上
+                    retrun(y,t,8,2);//左
+                }
+                if (i == 0 && (j >=2 && j <=5)){//上、右、右上、右下、下
+                    retrun(y,t,5,2);//右下
+                    retrun(y,t,3,2);//右上
+                    retrun(y,t,4,2);//右
+                    retrun(y,t,2,2);//上
+                    retrun(y,t,6,2);//下
+                }
+                }else{
+                    if (button_flag[y-1][t-1] == 1) {
+                        retrun(y,t,1,2);
+                    }
+                    if (button_flag[y][t-1] == 1) {
+                        retrun(y,t,2,2);
+                    }
+                    if (button_flag[y+1][t-1] == 1) {
+                        retrun(y,t,3,2);
+                    }
+                    if (button_flag[y+1][t] == 1) {
+                        retrun(y,t,4,2);
+                    }
+                    if (button_flag[y+1][t+1] == 1) {
+                        retrun(y,t,5,2);
+                    }
+                    if (button_flag[y][t+1] == 1) {
+                        retrun(y,t,6,2);
+                    }
+                    if (button_flag[y-1][t+1] == 1) {
+                        retrun(y,t,7,2);
+                    }
+                    if (button_flag[y-1][t] == 1) {
+                        retrun(y,t,8,2);
+                    }
+                }
                 ex_put(1);
             }
         }
