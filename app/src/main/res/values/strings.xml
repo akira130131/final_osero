@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Osero</string>
+    <string name="brack_text">黒の番</string>
+    <string name="white_text">白の番</string>
 </resources>
